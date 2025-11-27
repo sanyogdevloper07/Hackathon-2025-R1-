@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> Flag Challenge</title>
+</head>
+<body>
+    <h1>Welcome to the flag Challenge</h1>
+    <p>Try to find the secret flag by exploring the widgets!</p>
+    <button id="showFlagBtn">hacking is tough indeed!</button>
+    <p id="flagOutput" style="margin-top:20px; font-weight:bold;"></p>
+
+    <script>
+        document.getElementById('showFlagBtn').addEventListener('click', () => {
+            fetch('/get-flag')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('flagOutput').textContent = data.encodedFlag;
+                })
+                .catch(() => {
+                    document.getElementById('flagOutput').textContent = "Error fetching flag.";
+                });
+        });
+    </script>
+</body>
+</html>
