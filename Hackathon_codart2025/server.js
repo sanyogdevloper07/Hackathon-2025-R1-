@@ -10,41 +10,35 @@ const scores = {};
 
 // Flags securely stored on server by challenge index
 const FLAGS = {
-  0: "flag{d3crypt1ng1sfUn}",
-  1: "flag{xxxx}",
-  2: "flag{john_your_buddy}",
-  3: "flag{delightful_victory}",
-  4: "flag{onethis_is_on_imma_make_a_to_obfuscate}",
-  5: "flag{flags_are_adorable222}",
-  6: "ctf{heyo}",
-  7: "flag{safqdehnbrco}",
-  8: "ctf{client_side_authentication_is_always_a_bad_idea}",
-  9: "flag{yes_the_dino_swims}",
-  10: "flag{7g8h9i}",
-  11: "byuctf{yes_yes_it_is_a_qr_code_q56rtikb}",
-  12: "ctf{He's beginning to believe!}",
-  13: "ctf{me160879ro}",
-  14: "flag{vigenere_donendusted}"
+  0: "flag{hereyou_go}",
+  1: "flag{client_serverr_ssl_base64}",
+  2: "flag{stego_challange}",
+  3: "flag{qv_ihddena_vauler}",
+  4: "flag{COOL_ENCRYPTION}",
+  5: "flag{codart25}",
+  6: "flag{safqdehnbrco}",
+  7: "flag{incorrect}"
 };
 
 // Hints securely stored on server by challenge index
 const HINTS = [
-  "Ever thought how ships used to share signals in earlier times.",
-  "You may wanna focus on the question.",
-  "Did you pay attention on the file name and the question?",
-  "Have u ever seen the source code??",
-  "Its all in the name of the file",
-  "Is it encrypted TWICE maybe THRICEEEEEE?!!?!",
-  "JACKTHERIPPER",
-  "Consider how each letter might be used to spell out something in a specific order.",
-  "The JavaScript code may be tampered, look closely!",
-  "Images are known for hiding valuable piece of information. This can be done through various techniques.",
-  "CHECKSOME",
-  "all u need is a text editor(notnotepad) and ctrl+f",
-  "Read the code and check line 104 PROPERLY (#)",
-  "USE ROCKYOU.txt",
-  'What could be the "KEY" you need to decode this message?'
+  "The secrets you seek aren't just on the page itself. You have been given a bunch of files right? Might want to explore them.",
+  "Images are known to hide texts within them now-a-days, you might know some tools to uncover the same.",
+  "Decode, then decode again; what you find at first is just the surface.",
+  "Decode the dots and dashes to find your key—this password is your gateway but don't stop when the file opens.",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
 ];
+
 
 // Serve main.html by default
 app.get('/', (req, res) => {

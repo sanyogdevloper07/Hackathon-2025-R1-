@@ -1,126 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CODART 3.0 Challenges</title>
-    <link rel="stylesheet" href="styles2.css" />
-    <!-- Add font imports for better typography -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      .status-image {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        display: none;
-        width: 28px;
-        height: 28px;
-        transition: transform 0.3s ease;
-      }
 
-      .status-image.visible {
-        transform: scale(1.1);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODART 3.0 Challenges</title>
+  <link rel="stylesheet" href="styles2.css" />
+  <!-- Add font imports for better typography -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    .status-image {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: none;
+      width: 28px;
+      height: 28px;
+      transition: transform 0.3s ease;
+    }
 
-      /* Ensure challenge numbers are properly positioned */
-      .challenge {
-        position: relative;
-        padding-right: 80px; /* Make space for the number badge */
-      }
+    .status-image.visible {
+      transform: scale(1.1);
+    }
 
-      /* Additional styles for grid layout */
-      .challenges-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-      }
+    /* Ensure challenge numbers are properly positioned */
+    .challenge {
+      position: relative;
+      padding-right: 80px;
+      /* Make space for the number badge */
+    }
 
-      /* Make sure container is properly structured */
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>CTF Challenges</h1>
+    /* Additional styles for grid layout */
+    .challenges-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-      <div class="navigation-buttons">
-        <button
-          onclick="redirectToScorecard()"
-          class="nav-button scorecard-btn"
-        >
-          Scoreboard
-        </button>
-        <button onclick="logout()" class="nav-button logout-btn">Logout</button>
-      </div>
-      <div class="challenges-container" id="challengesGrid">
-        <!-- Challenges will be dynamically generated here -->
-      </div>
+    /* Make sure container is properly structured */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>CTF Challenges</h1>
+
+    <div class="navigation-buttons">
+      <button onclick="redirectToScorecard()" class="nav-button scorecard-btn">
+        Scoreboard
+      </button>
+      <button onclick="logout()" class="nav-button logout-btn">Logout</button>
     </div>
-
-    <div class="total-points">
-      Total Points: <span id="total-points">0</span>
+    <div class="challenges-container" id="challengesGrid">
+      <!-- Challenges will be dynamically generated here -->
     </div>
+  </div>
 
-    <script>
-      const points = new Array(15).fill(30);
+  <div class="total-points">
+    Total Points: <span id="total-points">0</span>
+  </div>
 
-      const fileNames = [
-        
-            ];
+  <script>
+    const points = new Array(15).fill(30);
 
-      const descriptions = [
-      ];
+    const fileNames = [
+      "challenge 1.zip",
+      "sssttt.html",
+      "challenge 3.zip",
+      "challenge 4.zip",
+      "challenge 5.zip",
+      "aaaa.txt",
+      "code.txt",
+      "OIP.jpg"
+    ];
 
-      const tags = [
-      ];
+    const descriptions = [
+      //1
+      "Hey hacker, ready for your first sneak peek into the world of secrets?\n\nYou landed on a webpage crafted by a rookie coder who wasn’t too careful… Something valuable is hidden here, but only those who know how to look beyond the surface will find it.\nRemember, flags look like this: flag{...} — but that’s all we’ll say for now.",
+      //2
+      "HIDDEN PIXELS\nThere’s more to this adorable Pikachu you will find in the files.\nSpirit of the true hacker: secrets hide where nobody expects.\nCan you uncover the message concealed deep within the pixels?",
+      //3
+      "!!!! At first glance, the pattern seems ordinary. But every shadow hides another, and only by unraveling each twist will you reveal what’s been concealed so cleverly !!!!",
+      //4
+      "Buried deep within this folder lies a secret waiting to be unlocked.\nFirst, look closely at the rhythmic pulses hidden in the code—they form a key to open what’s sealed tight.\nOnce the lock is undone, a ciphered message awaits, concealed in ciphertext only the cleverest can decode.\nCan you unravel the layers and claim the flag?",
+      //5
+      "You’ve intercepted an image suspected to carry a secret message hidden within its pixels. Your task is to first extract the concealed text using appropriate techniques. Once revealed, this text is still encrypted with. Decode it using the correct key to uncover the final secret message. Can you reveal what’s hidden beneath the surface?",
+      //6
+      "SOMETIMES THINGS ARE NOT AS COMPLICATED AS THEY SEEM TO BE. LOOK CLOSELY HACKER YOU CAN SURELY CRACK THIS<br> FLAG FORMAT - flag{codart25}",
+      //7
+      "I came across this malicious code, but I'm not quite sure what language it's written in... can you help me?",
+      //8
+    ];
 
-      let totalPoints = parseInt(sessionStorage.getItem("totalPoints")) || 0;
-      const completedChallenges = new Set(
-        JSON.parse(sessionStorage.getItem("completedChallenges")) || []
-      );
-      const revealedHints = new Set(
-        JSON.parse(sessionStorage.getItem("revealedHints")) || []
-      );
-      const teamName =
-        sessionStorage.getItem("teamName") || prompt("Enter your team name:");
-      sessionStorage.setItem("teamName", teamName);
+    const tags = [
+      //1
+      ["web exploitation", "base64", "javascript"],
+      //2
+      ["steganography", "hidden message", "image"],
+      //3
+      ["qr code", "encoded", "easy"],
+      //4
+      ["zip file", "morse code"],
+      //5
+      ["caesar cipher", "vigenere cipher", "encryption"],
+      //6
+      ["encryption", "easy"],
+      //7
+      ["encrypted", "alphanumeric", "sequential"],
+      //8
+      []
+    ];
 
-      document.getElementById("total-points").textContent = totalPoints;
 
-      const challengesGrid = document.getElementById("challengesGrid");
-      const tickImageSrc = "tick.png";
+    let totalPoints = parseInt(sessionStorage.getItem("totalPoints")) || 0;
+    const completedChallenges = new Set(
+      JSON.parse(sessionStorage.getItem("completedChallenges")) || []
+    );
+    const revealedHints = new Set(
+      JSON.parse(sessionStorage.getItem("revealedHints")) || []
+    );
+    const teamName =
+      sessionStorage.getItem("teamName") || prompt("Enter your team name:");
+    sessionStorage.setItem("teamName", teamName);
 
-      for (let i = 0; i < 15; i++) {
-        const challengeDiv = document.createElement("div");
-        challengeDiv.className = "challenge";
-        challengeDiv.id = `challenge${i + 1}`;
-        challengeDiv.setAttribute("data-challenge-number", i + 1);
+    document.getElementById("total-points").textContent = totalPoints;
 
-        const tagsHTML = tags[i]
-          .map((tag) => `<span class="tag">${tag}</span>`)
-          .join(" ");
+    const challengesGrid = document.getElementById("challengesGrid");
+    const tickImageSrc = "tick.png";
 
-        challengeDiv.innerHTML = `
+    for (let i = 0; i < 15; i++) {
+      const challengeDiv = document.createElement("div");
+      challengeDiv.className = "challenge";
+      challengeDiv.id = `challenge${i + 1}`;
+      challengeDiv.setAttribute("data-challenge-number", i + 1);
+
+      const tagsHTML = tags[i]
+        .map((tag) => `<span class="tag">${tag}</span>`)
+        .join(" ");
+
+      challengeDiv.innerHTML = `
       <h2>Challenge ${i + 1}</h2>
       <p class="challenge-points">${points[i]} Points</p>
       <p class="challenge-description">${descriptions[i]}</p>
       <div class="tags-container">${tagsHTML}</div>
-      <input type="text" placeholder="flag{your_flag}" class="flag-input" value="${
-        sessionStorage.getItem(`flagInput${i}`) || ""
-      }">
+      <input type="text" placeholder="flag{your_flag}" class="flag-input" value="${sessionStorage.getItem(`flagInput${i}`) || ""
+        }">
       <div class="buttons-row">
-          <a href="files/${fileNames[i]}" download="${
-          fileNames[i]
+          <a href="files/${fileNames[i]}" download="${fileNames[i]
         }" class="download-button">Download File</a>
           <button onclick="checkFlag(${i}, event)" class="submit-button">Submit Flag</button>
       </div>
@@ -130,149 +166,150 @@
       <img src="${tickImageSrc}" alt="Completed" class="status-image" id="status${i}">
     `;
 
-        challengesGrid.appendChild(challengeDiv);
-      }
+      challengesGrid.appendChild(challengeDiv);
+    }
 
-      function checkFlag(challengeIndex, event) {
-        event.preventDefault();
+    function checkFlag(challengeIndex, event) {
+      event.preventDefault();
 
-        const challenge =
-          document.getElementsByClassName("challenge")[challengeIndex];
-        const input = challenge.getElementsByClassName("flag-input")[0];
-        const errorMessage =
-          challenge.getElementsByClassName("error-message")[0];
-        const button = challenge.getElementsByClassName("submit-button")[0];
-        const statusImage = challenge.querySelector(".status-image");
+      const challenge =
+        document.getElementsByClassName("challenge")[challengeIndex];
+      const input = challenge.getElementsByClassName("flag-input")[0];
+      const errorMessage =
+        challenge.getElementsByClassName("error-message")[0];
+      const button = challenge.getElementsByClassName("submit-button")[0];
+      const statusImage = challenge.querySelector(".status-image");
 
-        fetch("/submit-flag", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            teamName: teamName,
-            challengeIndex: challengeIndex,
-            flag: input.value.trim(),
-          }),
+      fetch("/submit-flag", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teamName: teamName,
+          challengeIndex: challengeIndex,
+          flag: input.value.trim(),
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          errorMessage.textContent = data.message;
+
+          if (data.message === "Correct flag!") {
+            totalPoints = data.score;
+            document.getElementById("total-points").textContent = totalPoints;
+
+            if (!completedChallenges.has(challengeIndex)) {
+              completedChallenges.add(challengeIndex);
+              sessionStorage.setItem(
+                "completedChallenges",
+                JSON.stringify(Array.from(completedChallenges))
+              );
+            }
+
+            input.disabled = true;
+            button.disabled = true;
+            statusImage.style.display = "block";
+            statusImage.classList.add("visible");
+            errorMessage.style.color = "#00b09b";
+          } else {
+            errorMessage.style.color = "#ff6b6b";
+          }
         })
+        .catch(() => {
+          errorMessage.textContent = "Server error. Try again later.";
+          errorMessage.style.color = "#ff6b6b";
+        });
+
+      sessionStorage.setItem(`flagInput${challengeIndex}`, input.value);
+    }
+
+    function showHint(challengeIndex) {
+      if (
+        confirm(
+          "2 points shall be deducted on revealing the hint. Do you want to proceed?"
+        )
+      ) {
+        fetch(`/hints/${challengeIndex}`)
           .then((res) => res.json())
           .then((data) => {
-            errorMessage.textContent = data.message;
+            const hint = document.getElementById(`hint${challengeIndex}`);
+            hint.textContent = data.hint;
+            hint.style.display = "block";
+            const hintButton =
+              document.getElementsByClassName("hint-button")[challengeIndex];
+            hintButton.disabled = true;
 
-            if (data.message === "Correct flag!") {
-              totalPoints = data.score;
-              document.getElementById("total-points").textContent = totalPoints;
-
-              if (!completedChallenges.has(challengeIndex)) {
-                completedChallenges.add(challengeIndex);
-                sessionStorage.setItem(
-                  "completedChallenges",
-                  JSON.stringify(Array.from(completedChallenges))
-                );
-              }
-
-              input.disabled = true;
-              button.disabled = true;
-              statusImage.style.display = "block";
-              statusImage.classList.add("visible");
-              errorMessage.style.color = "#00b09b";
-            } else {
-              errorMessage.style.color = "#ff6b6b";
+            if (!revealedHints.has(challengeIndex)) {
+              totalPoints -= 2;
+              revealedHints.add(challengeIndex);
+              sessionStorage.setItem(
+                "revealedHints",
+                JSON.stringify([...revealedHints])
+              );
             }
-          })
-          .catch(() => {
-            errorMessage.textContent = "Server error. Try again later.";
-            errorMessage.style.color = "#ff6b6b";
-          });
 
-        sessionStorage.setItem(`flagInput${challengeIndex}`, input.value);
-      }
+            document.getElementById("total-points").textContent = totalPoints;
+            sessionStorage.setItem("totalPoints", totalPoints);
 
-      function showHint(challengeIndex) {
-        if (
-          confirm(
-            "2 points shall be deducted on revealing the hint. Do you want to proceed?"
-          )
-        ) {
-          fetch(`/hints/${challengeIndex}`)
-            .then((res) => res.json())
-            .then((data) => {
-              const hint = document.getElementById(`hint${challengeIndex}`);
-              hint.textContent = data.hint;
-              hint.style.display = "block";
-              const hintButton =
-                document.getElementsByClassName("hint-button")[challengeIndex];
-              hintButton.disabled = true;
-
-              if (!revealedHints.has(challengeIndex)) {
-                totalPoints -= 2;
-                revealedHints.add(challengeIndex);
-                sessionStorage.setItem(
-                  "revealedHints",
-                  JSON.stringify([...revealedHints])
-                );
-              }
-
-              document.getElementById("total-points").textContent = totalPoints;
-              sessionStorage.setItem("totalPoints", totalPoints);
-
-              fetch("/scorecard/update", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ teamName: teamName, points: -2 }),
+            fetch("/scorecard/update", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ teamName: teamName, points: -2 }),
+            })
+              .then((response) => {
+                if (!response.ok) throw new Error("Failed to update score");
+                return response.text();
               })
-                .then((response) => {
-                  if (!response.ok) throw new Error("Failed to update score");
-                  return response.text();
-                })
-                .then(() => console.log("Score updated due to hint usage"))
-                .catch((error) => console.error("Error:", error));
-            });
-        }
+              .then(() => console.log("Score updated due to hint usage"))
+              .catch((error) => console.error("Error:", error));
+          });
       }
+    }
 
-      function initializePage() {
-        revealedHints.forEach((index) => {
-          const hint = document.getElementById(`hint${index}`);
-          hint.style.display = "block";
-          const hintButton =
-            document.getElementsByClassName("hint-button")[index];
-          hintButton.disabled = true;
-        });
+    function initializePage() {
+      revealedHints.forEach((index) => {
+        const hint = document.getElementById(`hint${index}`);
+        hint.style.display = "block";
+        const hintButton =
+          document.getElementsByClassName("hint-button")[index];
+        hintButton.disabled = true;
+      });
 
-        completedChallenges.forEach((index) => {
-          const input = document.getElementsByClassName("flag-input")[index];
-          const button =
-            document.getElementsByClassName("submit-button")[index];
-          const statusImage = document.getElementById(`status${index}`);
+      completedChallenges.forEach((index) => {
+        const input = document.getElementsByClassName("flag-input")[index];
+        const button =
+          document.getElementsByClassName("submit-button")[index];
+        const statusImage = document.getElementById(`status${index}`);
 
-          input.disabled = true;
-          button.disabled = true;
-          statusImage.style.display = "block";
-          statusImage.classList.add("visible");
-        });
+        input.disabled = true;
+        button.disabled = true;
+        statusImage.style.display = "block";
+        statusImage.classList.add("visible");
+      });
+    }
+
+    initializePage();
+
+    function handleResize() {
+      const challengesGrid = document.getElementById("challengesGrid");
+      if (window.innerWidth <= 1024) {
+        challengesGrid.style.gridTemplateColumns = "1fr";
+      } else {
+        challengesGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
       }
+    }
 
-      initializePage();
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-      function handleResize() {
-        const challengesGrid = document.getElementById("challengesGrid");
-        if (window.innerWidth <= 1024) {
-          challengesGrid.style.gridTemplateColumns = "1fr";
-        } else {
-          challengesGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
-        }
-      }
+    function redirectToScorecard() {
+      window.location.href = "scorecard.html";
+    }
 
-      handleResize();
-      window.addEventListener("resize", handleResize);
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "main.html";
+    }
+  </script>
+</body>
 
-      function redirectToScorecard() {
-        window.location.href = "scorecard.html";
-      }
-
-      function logout() {
-        sessionStorage.clear();
-        window.location.href = "main.html";
-      }
-    </script>
-  </body>
 </html>
