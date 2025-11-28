@@ -72,33 +72,45 @@
 
   <script>
 
-    // ADD THIS FIRST - Team name mandatory protection
-    window.addEventListener('pageshow', function (event) {
-      if (event.persisted || !sessionStorage.getItem('teamName')) {
-        setTimeout(() => {
-          let teamName = sessionStorage.getItem('teamName');
-          while (!teamName || teamName.trim() === '') {
-            teamName = prompt('Team name is MANDATORY. Enter now:');
-            if (teamName === null) {
-              alert('Team name required! Redirecting to login.');
-              window.location.href = 'index.html';
-              return;
-            }
-            teamName = teamName.trim();
+    // TEAM NAME MANDATORY + BACK BUTTON BLOCK - ADD THIS FIRST
+    let teamNameSet = false;
+
+    function ensureTeamName() {
+      if (!teamNameSet || !sessionStorage.getItem('teamName')) {
+        let teamName = sessionStorage.getItem('teamName') || '';
+        while (!teamName || teamName.trim() === '') {
+          teamName = prompt('Team name is MANDATORY before proceeding:');
+          if (teamName === null) {
+            window.location.href = 'index.html';
+            return false;
           }
-          sessionStorage.setItem('teamName', teamName);
-          fetch('/register-team', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ teamName: teamName })
-          });
-        }, 100);
+          teamName = teamName.trim();
+        }
+        sessionStorage.setItem('teamName', teamName);
+        fetch('/register-team', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ teamName: teamName })
+        }).catch(() => { }); // Silent fail
+        teamNameSet = true;
+        return true;
       }
-    });
+      return true;
+    }
+
+    // Block back button completely
     window.history.pushState(null, null, location.href);
     window.onpopstate = function () {
+      if (!ensureTeamName()) return;
       window.history.pushState(null, null, location.href);
     };
+
+    // Force team name on page load/back
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted || !sessionStorage.getItem('teamName')) {
+        ensureTeamName();
+      }
+    });
     const points = new Array(15).fill(30);
     const fileNames = [
       //0
