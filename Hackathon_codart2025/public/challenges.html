@@ -169,7 +169,7 @@
       //13
       ["OSINT", "Social Media", "investigation"],
       //14
-      ["permutation","ordering", "logic"]
+      ["permutation", "ordering", "logic"]
     ];
 
 
@@ -360,6 +360,38 @@
       sessionStorage.clear();
       window.location.href = "main.html";
     }
+
+    // Prevent back navigation + force team name on challenges.html load
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted || !sessionStorage.getItem('teamName')) {
+        // User came via back button or no team name → force prompt
+        setTimeout(() => {
+          let teamName = sessionStorage.getItem('teamName');
+          while (!teamName || teamName.trim() === '') {
+            teamName = prompt('Team name is MANDATORY. Enter now:');
+            if (teamName === null) { // User clicked Cancel
+              alert('Team name required! Redirecting to login.');
+              window.location.href = 'index.html';
+              return;
+            }
+            teamName = teamName.trim();
+          }
+          sessionStorage.setItem('teamName', teamName);
+          // Update server immediately
+          fetch('/register-team', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ teamName: teamName })
+          });
+        }, 100);
+      }
+    });
+
+    // Block back button entirely
+    window.history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      window.history.pushState(null, null, location.href);
+    };
   </script>
 </body>
 
