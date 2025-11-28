@@ -86,9 +86,9 @@
       9: "flag{letmein}",
       10: "flag{met_a_data}",
       11: "flag{toomanyencryptions}",
-      12: "",
-      13: "",
-      14: "",
+      12: "flag{coder_authenticated_009}",
+      13: "flag{web_sur4ing}",
+      14: "flag{easy_logic}", "flag{logic_easy}"
 
 };
 
@@ -119,11 +119,11 @@
       //11
       "A decoding method uses shifting of letters, try shift of one",
       //12
-      "",
+      "Before the SHA-256 hashing happens, the transformed data is Base64 encoded. <br> Base64 has a limited alphabet. <br> This means it’s possible to search for a Base64-looking string whose SHA-256 matches the target.",
       //13
-      "",
+      "Think beyond captions/text",
       //14
-      ""
+      "Sometimes code alone cannot reveal the truth; it is human intelligence that uncovers it."
     ];
     const fileNames = [
       //0
@@ -151,7 +151,11 @@
       //11
       "ch.txt",
       //12
-      ""
+      "test.py",
+      //13
+      "redirect.txt",
+      //14
+      "yourfile.txt"
     ];
 
     const descriptions = [
@@ -180,7 +184,11 @@
       //11
       "HEY CODER! Here is a peice of text from a clever man's archive. I suggest you should repeat the same operation a couple of times to reach you goal.",
       //12
-      ""
+      "A strange Python script was recovered from an old authentication system. <br> It no longer contains any plaintext credentials, but it still validates a secret flag using a transformation function.<br>Your job is to reverse the logic hidden inside the script and recover the only input string that passes the check.",
+      //13
+      "They say every profile on the internet leaves traces—some loud, some quiet, and some hiding in plain sight.<br>A certain Instagram page has been whispering clues for a while now, but only those who observe carefully ever notice anything unusual.",
+      //14
+      " A small script is guarding a secret. It doesn't seems to be really complicated but accepts only certain inputs to revel the secrets.<br> MAKE SURE YOUR FLAG MAKES SOME SENSE!!!<br> FLAG FORMAT - flag{some sensible word}"
     ];
 
 
@@ -210,7 +218,11 @@
       //11
       ["shift", "decoding", "medium"],
       //12
-      []
+      ["reverse engineering", "python", "SHA-256"],
+      //13
+      ["OSINT", "Social Media", "investigation"],
+      //14
+      ["permutation","ordering", "logic"]
     ];
 
 

@@ -1,0 +1,10 @@
+def check_flag(s):
+    secret = ['e', 'a', 's', 'y', '_', 'l', 'o', 'g', 'i', 'c']
+    return sorted(s) == sorted(secret)
+
+user = input("Enter the flag: ").strip()
+
+if check_flag(user):
+    print("Correct! The flag is:", f"flag{{{user}}}")
+else:
+    print("Wrong flag! Try again.")
