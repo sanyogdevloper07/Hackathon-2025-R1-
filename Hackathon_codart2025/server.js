@@ -15,7 +15,7 @@ const scores = {};
       1: "flag{stego_challange}",
       2: "flag{qv_ihddena_vauler}",
       3: "flag{COOL_ENCRYPTION}",
-      4: "flag{hereyou_go}",
+      4: "flag{i_1ove_f12hing}",
       5: "flag{codart25}",
       6: "flag{safqdehnbrco}",
       7: "flag{incorrect}",
@@ -40,7 +40,7 @@ const scores = {};
       //3
       "Decode the dots and dashes to find your key—this password is your gateway but don't stop when the file opens.",
       //4
-      "The simplest way to hide data is in the LSB, you should have a thought about encryption using a key",
+      "the textbox won't let you write the keyword unless you make it stop from the source.",
       //5
       "common sense is not so common now-a-days",
       //6
