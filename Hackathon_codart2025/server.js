@@ -9,35 +9,7 @@ app.use(express.json());
 const scores = {};
 
 // Flags securely stored on server by challenge index
-const FLAGS = {
-  0: "flag{hereyou_go}",
-  1: "flag{client_serverr_ssl_base64}",
-  2: "flag{stego_challange}",
-  3: "flag{qv_ihddena_vauler}",
-  4: "flag{COOL_ENCRYPTION}",
-  5: "flag{codart25}",
-  6: "flag{safqdehnbrco}",
-  7: "flag{incorrect}"
-};
 
-// Hints securely stored on server by challenge index
-const HINTS = [
-  "The secrets you seek aren't just on the page itself. You have been given a bunch of files right? Might want to explore them.",
-  "Images are known to hide texts within them now-a-days, you might know some tools to uncover the same.",
-  "Decode, then decode again; what you find at first is just the surface.",
-  "Decode the dots and dashes to find your key—this password is your gateway but don't stop when the file opens.",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  ""
-];
 
 
 // Serve main.html by default
