@@ -70,8 +70,7 @@
     Total Points: <span id="total-points">0</span>
   </div>
 
-  <script>
-
+<script>
     // TEAM NAME MANDATORY + BACK BUTTON BLOCK - ADD THIS FIRST
     let teamNameSet = false;
 
@@ -111,107 +110,63 @@
         ensureTeamName();
       }
     });
+
+    // --- Data Definitions (Unchanged) ---
     const points = new Array(15).fill(30);
-const fileNames = [
-      //0
-      "challenge 1.zip",
-      //1
-      "link.txt",
-      //2
-      "challenge 3.zip",
-      //3
-      "challenge 4.zip",
-      //4
-      "challenge 5.zip",
-      //5
-      "aaaa.txt",
-      //6
-      "code.txt",
-      //7
-      "OIP.jpg",
-      //8
-      "boom.txt",
-      //9
-      "1111.zip",
-      //10
-      "eee.zip",
-      //11
-      "ch.txt",
-      //12
-      "test.py",
-      //13
-      "redirect.txt",
-      //14
-      "yourfile.txt"
+    const fileNames = [
+        //0
+        "challenge 1.zip", "link.txt", "challenge 3.zip", "challenge 4.zip", "challenge 5.zip",
+        //5
+        "aaaa.txt", "code.txt", "OIP.jpg", "boom.txt", "1111.zip",
+        //10
+        "eee.zip", "ch.txt", "test.py", "redirect.txt", "yourfile.txt"
     ];
 
     const descriptions = [
-      //0
-      "Hey hacker, ready for your first sneak peek into the world of secrets?\n\nYou landed on a webpage crafted by a rookie coder who wasn’t too careful… Something valuable is hidden here, but only those who know how to look beyond the surface will find it.\nRemember, flags look like this: flag{...} — but that’s all we’ll say for now.",
-      //1
-      "HIDDEN PIXELS\nThere’s more to this adorable Pikachu you will find in the files.\nSpirit of the true hacker: secrets hide where nobody expects.\nCan you uncover the message concealed deep within the pixels?",
-      //2
-      "!!!! At first glance, the pattern seems ordinary. But every shadow hides another, and only by unraveling each twist will you reveal what’s been concealed so cleverly !!!!",
-      //3
-      "Buried deep within this folder lies a secret waiting to be unlocked.\nFirst, look closely at the rhythmic pulses hidden in the code—they form a key to open what’s sealed tight.\nOnce the lock is undone, a ciphered message awaits, concealed in ciphertext only the cleverest can decode.\nCan you unravel the layers and claim the flag?",
-      //4
-      "Yo, we hacked this sketchy website that spits out binary for whatever you type. But peep this — only one secret phrase makes it spit out a binary that actually says something real. Find the vibe, drop the right phrase, and decode that binary for the flag.",
-      "SOMETIMES THINGS ARE NOT AS COMPLICATED AS THEY SEEM TO BE. LOOK CLOSELY HACKER YOU CAN SURELY CRACK THIS<br> FLAG FORMAT - flag{codart25}",
-      //6
-      "I came across this malicious code, but I'm not quite sure what language it's written in... can you help me?",
-      //7
-      "You've been provided the top secret data, only accessible to the pro hackers. The flag is not clearly visible as it has been hidden, use your techniques to retrive the secrets it beholds!",
-      //8
-      "You've successfully intercepted a curious digital artifact. The flag is not immediately visible, but it has been carefully obscured in two distinct stages. Your mission requires you to first unearth the hidden data from its unexpected location within the file's structure. Once extracted, the resulting text will be meaningless—you must then apply the correct key-based shift to restore the document to its original, readable form and claim the final flag.",
-      //9
-      "DECODE - COMBINE - SUBMIT - NEXT CHALLENGE !!!!!",
-      //10
-      "A stream of zeros and ones guards the first gate. Beyond lies a locked vision—pierce its veil to find the final whisper. Follow where bits lead, images conceal.",
-      //11
-      "HEY CODER! Here is a peice of text from a clever man's archive. I suggest you should repeat the same operation a couple of times to reach you goal.",
-      //12
-      "A strange Python script was recovered from an old authentication system. <br> It no longer contains any plaintext credentials, but it still validates a secret flag using a transformation function.<br>Your job is to reverse the logic hidden inside the script and recover the only input string that passes the check.",
-      //13
-      "They say every profile on the internet leaves traces—some loud, some quiet, and some hiding in plain sight.<br>A certain Instagram page has been whispering clues for a while now, but only those who observe carefully ever notice anything unusual.",
-      //14
-      " A small script is guarding a secret. It doesn't seems to be really complicated but accepts only certain inputs to revel the secrets.<br> MAKE SURE YOUR FLAG MAKES SOME SENSE!!!<br> FLAG FORMAT - flag{some sensible word}"
+        //0
+        "Hey hacker, ready for your first sneak peek into the world of secrets?\n\nYou landed on a webpage crafted by a rookie coder who wasn’t too careful… Something valuable is hidden here, but only those who know how to look beyond the surface will find it.\nRemember, flags look like this: flag{...} — but that’s all we’ll say for now.",
+        //1
+        "HIDDEN PIXELS\nThere’s more to this adorable Pikachu you will find in the files.\nSpirit of the true hacker: secrets hide where nobody expects.\nCan you uncover the message concealed deep within the pixels?",
+        //2
+        "!!!! At first glance, the pattern seems ordinary. But every shadow hides another, and only by unraveling each twist will you reveal what’s been concealed so cleverly !!!!",
+        //3
+        "Buried deep within this folder lies a secret waiting to be unlocked.\nFirst, look closely at the rhythmic pulses hidden in the code—they form a key to open what’s sealed tight.\nOnce the lock is undone, a ciphered message awaits, concealed in ciphertext only the cleverest can decode.\nCan you unravel the layers and claim the flag?",
+        //4
+        "Yo, we hacked this sketchy website that spits out binary for whatever you type. But peep this — only one secret phrase makes it spit out a binary that actually says something real. Find the vibe, drop the right phrase, and decode that binary for the flag.",
+        "SOMETIMES THINGS ARE NOT AS COMPLICATED AS THEY SEEM TO BE. LOOK CLOSELY HACKER YOU CAN SURELY CRACK THIS<br> FLAG FORMAT - flag{codart25}",
+        //6
+        "I came across this malicious code, but I'm not quite sure what language it's written in... can you help me?",
+        //7
+        "You've been provided the top secret data, only accessible to the pro hackers. The flag is not clearly visible as it has been hidden, use your techniques to retrive the secrets it beholds!",
+        //8
+        "You've successfully intercepted a curious digital artifact. The flag is not immediately visible, but it has been carefully obscured in two distinct stages. Your mission requires you to first unearth the hidden data from its unexpected location within the file's structure. Once extracted, the resulting text will be meaningless—you must then apply the correct key-based shift to restore the document to its original, readable form and claim the final flag.",
+        //9
+        "DECODE - COMBINE - SUBMIT - NEXT CHALLENGE !!!!!",
+        //10
+        "A stream of zeros and ones guards the first gate. Beyond lies a locked vision—pierce its veil to find the final whisper. Follow where bits lead, images conceal.",
+        //11
+        "HEY CODER! Here is a peice of text from a clever man's archive. I suggest you should repeat the same operation a couple of times to reach you goal.",
+        //12
+        "A strange Python script was recovered from an old authentication system. <br> It no longer contains any plaintext credentials, but it still validates a secret flag using a transformation function.<br>Your job is to reverse the logic hidden inside the script and recover the only input string that passes the check.",
+        //13
+        "They say every profile on the internet leaves traces—some loud, some quiet, and some hiding in plain sight.<br>A certain Instagram page has been whispering clues for a while now, but only those who observe carefully ever notice anything unusual.",
+        //14
+        " A small script is guarding a secret. It doesn't seems to be really complicated but accepts only certain inputs to revel the secrets.<br> MAKE SURE YOUR FLAG MAKES SOME SENSE!!!<br> FLAG FORMAT - flag{some sensible word}"
     ];
 
 
     const tags = [
-      //0
-      ["web exploitation", "base64", "javascript"],
-      //1
-      ["steganography", "hidden message", "image"],
-      //2
-      ["qr code", "encoded", "easy"],
-      //3
-      ["zip file", "morse code"],
-      //4
-      ["binary exploitation", "webapp", "encryption"],
-      //5
-      ["encryption", "easy"],
-      //6
-      ["encrypted", "alphanumeric", "sequential"],
-      //7
-      ["stegnography", "extraction"],
-      //8
-      ["hex", "multi-layered"],
-      //9
-      ["medium", "ciphering"],
-      //10
-      ["binary", "password guessing"],
-      //11
-      ["shift", "decoding", "medium"],
-      //12
-      ["reverse engineering", "python", "SHA-256"],
-      //13
-      ["OSINT", "Social Media", "investigation"],
-      //14
-      ["permutation", "ordering", "logic"]
+        //0
+        ["web exploitation", "base64", "javascript"], ["steganography", "hidden message", "image"], ["qr code", "encoded", "easy"], ["zip file", "morse code"], ["binary exploitation", "webapp", "encryption"],
+        //5
+        ["encryption", "easy"], ["encrypted", "alphanumeric", "sequential"], ["stegnography", "extraction"], ["hex", "multi-layered"], ["medium", "ciphering"],
+        //10
+        ["binary", "password guessing"], ["shift", "decoding", "medium"], ["reverse engineering", "python", "SHA-256"], ["OSINT", "Social Media", "investigation"], ["permutation", "ordering", "logic"]
     ];
+    // --- End Data Definitions ---
 
 
+    // --- Session Storage Initialization ---
     let totalPoints = parseInt(sessionStorage.getItem("totalPoints")) || 0;
     const completedChallenges = new Set(
       JSON.parse(sessionStorage.getItem("completedChallenges")) || []
@@ -219,8 +174,7 @@ const fileNames = [
     const revealedHints = new Set(
       JSON.parse(sessionStorage.getItem("revealedHints")) || []
     );
-    const teamName =
-      sessionStorage.getItem("teamName") || prompt("Enter your team name:");
+    const teamName = sessionStorage.getItem("teamName") || prompt("Enter your team name:");
     sessionStorage.setItem("teamName", teamName);
 
     document.getElementById("total-points").textContent = totalPoints;
@@ -228,179 +182,210 @@ const fileNames = [
     const challengesGrid = document.getElementById("challengesGrid");
     const tickImageSrc = "tick.png";
 
+    // --- Challenge Grid Generation (Unchanged, includes loading stored flag input) ---
     for (let i = 0; i < 15; i++) {
-      const challengeDiv = document.createElement("div");
-      challengeDiv.className = "challenge";
-      challengeDiv.id = `challenge${i + 1}`;
-      challengeDiv.setAttribute("data-challenge-number", i + 1);
+        const challengeDiv = document.createElement("div");
+        challengeDiv.className = "challenge";
+        challengeDiv.id = `challenge${i + 1}`;
+        challengeDiv.setAttribute("data-challenge-number", i + 1);
 
-      const tagsHTML = tags[i]
-        .map((tag) => `<span class="tag">${tag}</span>`)
-        .join(" ");
+        const tagsHTML = tags[i]
+          .map((tag) => `<span class="tag">${tag}</span>`)
+          .join(" ");
 
-      challengeDiv.innerHTML = `
-      <h2>Challenge ${i + 1}</h2>
-      <p class="challenge-points">${points[i]} Points</p>
-      <p class="challenge-description">${descriptions[i]}</p>
-      <div class="tags-container">${tagsHTML}</div>
-      <input type="text" placeholder="flag{your_flag}" class="flag-input" value="${sessionStorage.getItem(`flagInput${i}`) || ""
-        }">
-      <div class="buttons-row">
-          <a href="files/${fileNames[i]}" download="${fileNames[i]
-        }" class="download-button">Download File</a>
-          <button onclick="checkFlag(${i}, event)" class="submit-button">Submit Flag</button>
-      </div>
-      <button onclick="showHint(${i})" class="hint-button">Hint</button>
-      <p class="hint" id="hint${i}"></p>
-      <p class="error-message"></p>
-      <img src="${tickImageSrc}" alt="Completed" class="status-image" id="status${i}">
-    `;
+        challengeDiv.innerHTML = `
+          <h2>Challenge ${i + 1}</h2>
+          <p class="challenge-points">${points[i]} Points</p>
+          <p class="challenge-description">${descriptions[i]}</p>
+          <div class="tags-container">${tagsHTML}</div>
+          <input type="text" placeholder="flag{your_flag}" class="flag-input" value="${sessionStorage.getItem(`flagInput${i}`) || ""}">
+          <div class="buttons-row">
+              <a href="files/${fileNames[i]}" download="${fileNames[i]}" class="download-button">Download File</a>
+              <button onclick="checkFlag(${i}, event)" class="submit-button">Submit Flag</button>
+          </div>
+          <button onclick="showHint(${i})" class="hint-button">Hint</button>
+          <p class="hint" id="hint${i}"></p>
+          <p class="error-message"></p>
+          <img src="${tickImageSrc}" alt="Completed" class="status-image" id="status${i}">
+        `;
 
-      challengesGrid.appendChild(challengeDiv);
+        challengesGrid.appendChild(challengeDiv);
     }
+    // --- End Challenge Grid Generation ---
 
+
+    // --- Check Flag Function (Ensures input is saved permanently on correct flag) ---
     function checkFlag(challengeIndex, event) {
-      event.preventDefault();
+        event.preventDefault();
 
-      const challenge =
-        document.getElementsByClassName("challenge")[challengeIndex];
-      const input = challenge.getElementsByClassName("flag-input")[0];
-      const errorMessage =
-        challenge.getElementsByClassName("error-message")[0];
-      const button = challenge.getElementsByClassName("submit-button")[0];
-      const statusImage = challenge.querySelector(".status-image");
+        const challenge = document.getElementsByClassName("challenge")[challengeIndex];
+        const input = challenge.getElementsByClassName("flag-input")[0];
+        const errorMessage = challenge.getElementsByClassName("error-message")[0];
+        const button = challenge.getElementsByClassName("submit-button")[0];
+        const statusImage = challenge.querySelector(".status-image");
 
-      fetch("/submit-flag", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          teamName: teamName,
-          challengeIndex: challengeIndex,
-          flag: input.value.trim(),
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          errorMessage.textContent = data.message;
+        // Save input value before attempting submission (for persistence on reload)
+        sessionStorage.setItem(`flagInput${challengeIndex}`, input.value); 
 
-          if (data.message === "Correct flag!") {
-            totalPoints = data.score;
-            document.getElementById("total-points").textContent = totalPoints;
-
-            if (!completedChallenges.has(challengeIndex)) {
-              completedChallenges.add(challengeIndex);
-              sessionStorage.setItem(
-                "completedChallenges",
-                JSON.stringify(Array.from(completedChallenges))
-              );
-            }
-
-            input.disabled = true;
-            button.disabled = true;
-            statusImage.style.display = "block";
-            statusImage.classList.add("visible");
-            errorMessage.style.color = "#00b09b";
-          } else {
-            errorMessage.style.color = "#ff6b6b";
-          }
+        fetch("/submit-flag", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                teamName: teamName,
+                challengeIndex: challengeIndex,
+                flag: input.value.trim(),
+            }),
         })
-        .catch(() => {
-          errorMessage.textContent = "Server error. Try again later.";
-          errorMessage.style.color = "#ff6b6b";
-        });
-
-      sessionStorage.setItem(`flagInput${challengeIndex}`, input.value);
-    }
-
-    function showHint(challengeIndex) {
-      if (
-        confirm(
-          "2 points shall be deducted on revealing the hint. Do you want to proceed?"
-        )
-      ) {
-        fetch(`/hints/${challengeIndex}`)
           .then((res) => res.json())
           .then((data) => {
-            const hint = document.getElementById(`hint${challengeIndex}`);
-            hint.textContent = data.hint;
-            hint.style.display = "block";
-            const hintButton =
-              document.getElementsByClassName("hint-button")[challengeIndex];
-            hintButton.disabled = true;
+            errorMessage.textContent = data.message;
 
-            if (!revealedHints.has(challengeIndex)) {
-              totalPoints -= 2;
-              revealedHints.add(challengeIndex);
-              sessionStorage.setItem(
-                "revealedHints",
-                JSON.stringify([...revealedHints])
-              );
+            if (data.message === "Correct flag!") {
+                totalPoints = data.score;
+                document.getElementById("total-points").textContent = totalPoints;
+
+                if (!completedChallenges.has(challengeIndex)) {
+                    completedChallenges.add(challengeIndex);
+                    // Update session storage for completed challenges
+                    sessionStorage.setItem(
+                      "completedChallenges",
+                      JSON.stringify(Array.from(completedChallenges))
+                    );
+                }
+
+                // Set the input value to permanent and disable
+                input.disabled = true;
+                button.disabled = true;
+                statusImage.style.display = "block";
+                statusImage.classList.add("visible");
+                errorMessage.style.color = "#00b09b";
+            } else {
+                errorMessage.style.color = "#ff6b6b";
             }
-
-            document.getElementById("total-points").textContent = totalPoints;
-            sessionStorage.setItem("totalPoints", totalPoints);
-
-            fetch("/scorecard/update", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ teamName: teamName, points: -2 }),
-            })
-              .then((response) => {
-                if (!response.ok) throw new Error("Failed to update score");
-                return response.text();
-              })
-              .then(() => console.log("Score updated due to hint usage"))
-              .catch((error) => console.error("Error:", error));
-          });
-      }
+        })
+        .catch(() => {
+            errorMessage.textContent = "Server error. Try again later.";
+            errorMessage.style.color = "#ff6b6b";
+        });
     }
+    // --- End Check Flag Function ---
 
+
+    // --- Show Hint Function (Ensures hint state is saved permanently) ---
+    function showHint(challengeIndex) {
+        if (
+            confirm(
+              "2 points shall be deducted on revealing the hint. Do you want to proceed?"
+            )
+        ) {
+            fetch(`/hints/${challengeIndex}`)
+              .then((res) => res.json())
+              .then((data) => {
+                const hint = document.getElementById(`hint${challengeIndex}`);
+                hint.textContent = data.hint;
+                hint.style.display = "block";
+                const hintButton = document.getElementsByClassName("hint-button")[challengeIndex];
+                hintButton.disabled = true;
+
+                if (!revealedHints.has(challengeIndex)) {
+                    totalPoints -= 2;
+                    revealedHints.add(challengeIndex);
+                    // Update session storage for revealed hints
+                    sessionStorage.setItem(
+                      "revealedHints",
+                      JSON.stringify([...revealedHints])
+                    );
+                }
+
+                document.getElementById("total-points").textContent = totalPoints;
+                sessionStorage.setItem("totalPoints", totalPoints);
+
+                fetch("/scorecard/update", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ teamName: teamName, points: -2 }),
+                })
+                  .then((response) => {
+                    if (!response.ok) throw new Error("Failed to update score");
+                    return response.text();
+                  })
+                  .then(() => console.log("Score updated due to hint usage"))
+                  .catch((error) => console.error("Error:", error));
+            });
+        }
+    }
+    // --- End Show Hint Function ---
+
+
+    // --- Initialize Page Function (Crucial for loading persistent state) ---
     function initializePage() {
-      revealedHints.forEach((index) => {
-        const hint = document.getElementById(`hint${index}`);
-        hint.style.display = "block";
-        const hintButton =
-          document.getElementsByClassName("hint-button")[index];
-        hintButton.disabled = true;
-      });
+        // 1. Restore Revealed Hints state
+        revealedHints.forEach((index) => {
+            const hint = document.getElementById(`hint${index}`);
+            // Check if hint element exists before accessing its properties
+            if (hint) {
+              hint.style.display = "block";
+            }
+            const hintButton = document.getElementsByClassName("hint-button")[index];
+            if (hintButton) {
+              // Fetch hint text if it was revealed but not yet fetched (e.g., first load)
+              // NOTE: The original code only sets the text on showHint. 
+              // To fully persist the text, the hint text itself should also be saved/retrieved, 
+              // but per your request, we are just ensuring it's displayed and the button is disabled.
+              hintButton.disabled = true;
+            }
+        });
 
-      completedChallenges.forEach((index) => {
-        const input = document.getElementsByClassName("flag-input")[index];
-        const button =
-          document.getElementsByClassName("submit-button")[index];
-        const statusImage = document.getElementById(`status${index}`);
-
-        input.disabled = true;
-        button.disabled = true;
-        statusImage.style.display = "block";
-        statusImage.classList.add("visible");
-      });
+        // 2. Restore Completed Challenges state (Disabling input/button, showing tick)
+        completedChallenges.forEach((index) => {
+            const input = document.getElementsByClassName("flag-input")[index];
+            const button = document.getElementsByClassName("submit-button")[index];
+            const statusImage = document.getElementById(`status${index}`);
+            
+            if (input) {
+              input.disabled = true;
+            }
+            if (button) {
+              button.disabled = true;
+            }
+            if (statusImage) {
+              statusImage.style.display = "block";
+              statusImage.classList.add("visible");
+            }
+            
+            // The input value itself is handled by the initial loop rendering
+        });
     }
 
-    initializePage();
+    // Call initializePage() to apply persistent state on page load
+    initializePage(); 
+    // --- End Initialize Page Function ---
 
+
+    // --- Resize and Navigation Functions (Unchanged) ---
     function handleResize() {
-      const challengesGrid = document.getElementById("challengesGrid");
-      if (window.innerWidth <= 1024) {
-        challengesGrid.style.gridTemplateColumns = "1fr";
-      } else {
-        challengesGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
-      }
+        const challengesGrid = document.getElementById("challengesGrid");
+        if (window.innerWidth <= 1024) {
+            challengesGrid.style.gridTemplateColumns = "1fr";
+        } else {
+            challengesGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
+        }
     }
 
     handleResize();
     window.addEventListener("resize", handleResize);
 
     function redirectToScorecard() {
-      window.location.href = "scorecard.html";
+        window.location.href = "scorecard.html";
     }
 
     function logout() {
-      sessionStorage.clear();
-      window.location.href = "main.html";
+        sessionStorage.clear();
+        window.location.href = "main.html";
     }
 
-  </script>
+</script>
+
 </body>
 
 </html>
